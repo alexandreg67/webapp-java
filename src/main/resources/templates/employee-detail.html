@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <title>Détail employé</title>
+</head>
+<body>
+<h1>Détail de l'employé</h1>
+
+<p><strong>Prénom :</strong> <span th:text="${employee.firstName}">Prénom</span></p>
+<p><strong>Nom :</strong> <span th:text="${employee.lastName}">Nom</span></p>
+<p><strong>Email :</strong> <span th:text="${employee.mail}">Email</span></p>
+
+<a th:href="@{'/'}">Retour à la liste</a>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <title>Liste des employés</title>
+</head>
+<body>
+<h1>Liste des employés</h1>
+
+<!-- Tableau des employés -->
+<table border="1">
+    <thead>
+    <tr>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee : ${employees}">
+        <td th:text="${employee.firstName}">Prénom</td>
+        <td th:text="${employee.lastName}">Nom</td>
+        <td th:text="${employee.mail}">Email</td>
+        <td>
+            <a th:href="@{'/employee/' + ${employee.id}}">Voir</a> |
+            <a th:href="@{'/employee/delete/' + ${employee.id}}">Supprimer</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Formulaire d'ajout d'un employé -->
+<h2>Ajouter un employé</h2>
+
+<form action="#" th:action="@{/employee/save}" th:object="${employee}" method="post">
+    <label>Prénom :</label>
+    <input type="text" th:field="*{firstName}" required><br>
+
+    <label>Nom :</label>
+    <input type="text" th:field="*{lastName}" required><br>
+
+    <label>Email :</label>
+    <input type="email" th:field="*{mail}" required><br>
+
+    <label>Mot de passe :</label>
+    <input type="password" th:field="*{password}" required><br>
+
+    <button type="submit">Enregistrer</button>
+</form>
+</body>
+</html>
